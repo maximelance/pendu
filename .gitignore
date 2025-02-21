@@ -1,0 +1,30 @@
+# Fichiers de bibliothèque, de cache, et temporaires générés par Unity
+
+[Ll]ibrary/
+[Tt]emp/
+[Oo]bj/
+[Bb]uilds/
+[Ll]ogs/
+
+# Ignorer le dossier UserSettings
+UserSettings/
+
+# Logs et fichiers de débogage
+*.log
+*.txt
+
+# Fichiers de configuration spécifiques à Unity
+*.csproj
+*.unityproj
+*.sln
+*.userprefs
+
+
+# Ignorer les fichiers de configuration de l'éditeur de texte
+*.sublime-project
+*.sublime-workspace
+.vscode/
+
+# misc
+Assets/_EventOrizon/
+
