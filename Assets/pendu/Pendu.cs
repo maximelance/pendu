@@ -1,66 +1,46 @@
-using System.Collections;
-using System.Collections.Generic;
+/*
+ gère l'affichage du pendu
+*/
+
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Pendu : MonoBehaviour
+namespace Assets.pendu
 {
-  [SerializeField]
-    public Image img;
 
-    public Sprite[] sprites;
-    private         int index = 0;
-     
-     private int spriteArrayLength;
-
-
-     
-    //private IHMController IHM;
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public class Pendu : MonoBehaviour
     {
-        /*
-        IHM = GetComponent<IHMController>();
-        if(IHM.gameObject.CompareTag("result"))
+        [SerializeField]
+        private Image image;
+
+        public Sprite[] sprites;
+        private int index = 0;
+
+        private int spriteArrayLength;
+
+        void Start()
         {
-            img = IHM.gameObject.GetComponent<Image>();
+            image = GetComponent<Image>();
+            image.sprite = sprites[0];
+            spriteArrayLength = sprites.Length;
+
         }
-        */
 
-
-        img = GetComponent<Image>();
-        img.sprite = sprites[0];
-
-        spriteArrayLength = sprites.Length;
-
-    }
-
-    // Update is called once per frame
-    /*void Update()
-    {
-
-        if (Input.GetKeyDown(KeyCode.G))
-        {     
-            change_sprite();
+        public void Init()
+        {
+            index = 0;
+            image.sprite = sprites[index];
         }
-    }*/
 
+        public void UpdateSprite()
+        {
+            image.sprite = sprites[++index];
+        }
 
-    /*public void init()
-    {
-        img = GetComponent<Image>();
-        //img.sprite = list_sprite[0];
-    }*/
+        public int Size()
+        {
+            return spriteArrayLength;
+        }
 
-    public void UpdateSprite()
-    {
-         img.sprite = sprites[index++];
     }
-
-    public int Size()
-    {
-        return spriteArrayLength;
-    }
-        
 }

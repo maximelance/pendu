@@ -3,79 +3,65 @@ contient le mot à deviner
 gère la vérification des lettres propsoées
 met à jour l'état du mot à deviner
 */
-using UnityEngine;
 
-//namespace MyProject
-//{
-
-public class Word
+namespace Assets.pendu
 {
-    private string wordToGuess;
-
-    private string displayWord;
-
-    private char letter;
-
-    public Word(string word)
+    public class Word
     {
-        wordToGuess = word;
-        displayWord = new string('#', word.Length);
-    }
+        public string WordToGuess { get; set; }
 
-    public void Clear()
-    {
-        wordToGuess = "";
-        displayWord = "";
+        public string DisplayWord { get; set; }
 
-    }
+        public char letter;
 
-    public bool IsWordGuessed()
-    {
-        return wordToGuess == displayWord;
-    }
-
-    public string GetDisplayWord()
-    {
-        return displayWord;
-    }
-
-    public string GetGuessingWord()
-    {
-        return wordToGuess;
-    }
-
-    public char GetGuessedLetter()
-    {
-        return letter;
-    }
-
-    public  bool CheckUserLetter(string text) 
-    {
-        bool letterFound = false;
-        if (IsChar(text))
+        public Word(string word)
         {
-            for (int i = 0; i < wordToGuess.Length; i++)
-            {
-                char lowerWordToGuess = char.ToLower(wordToGuess[i]);
-                char lowerLetter = char.ToLower(letter);
+            WordToGuess = word;
+            DisplayWord = new string('#', word.Length);
+        }
 
-                if (lowerWordToGuess == lowerLetter)
+        public void Clear()
+        {
+            WordToGuess = "";
+            DisplayWord = new string('?', 5);
+        }
+
+        public bool IsWordGuessed()
+        {
+            return WordToGuess == DisplayWord;
+        }
+
+        public char GetGuessedLetter()
+        {
+            return letter;
+        }
+
+        public bool CheckUserLetter(string text)
+        {
+            bool letterFound = false;
+            if (IsChar(text))
+            {
+                for (int i = 0; i < WordToGuess.Length; i++)
                 {
-                    char[] charArray = displayWord.ToCharArray();
-                    charArray[i] = wordToGuess[i];
-                    displayWord = new string(charArray);
-                    letterFound = true;
+                    char lowerWordToGuess = char.ToLower(WordToGuess[i]);
+                    char lowerLetter = char.ToLower(letter);
+
+                    if (lowerWordToGuess == lowerLetter)
+                    {
+                        char[] charArray = DisplayWord.ToCharArray();
+                        charArray[i] = WordToGuess[i];
+                        DisplayWord = new string(charArray);
+                        letterFound = true;
+                    }
                 }
             }
+            return letterFound;
         }
-        return letterFound;
-    }
-    bool IsChar(string text)
-    {
+        bool IsChar(string text)
+        {
             bool isChar = false;
             isChar = char.TryParse(text, out letter);
             return isChar;
+        }
     }
 }
-
-//}

@@ -3,56 +3,53 @@ représente le joueur
 stocke les informations sur les lettres déja proposées et les tentatives restantes
 */
 
-
 using System.Collections.Generic;
 
-//namespace MyProject
-//{
-
-public class Player
+namespace Assets.pendu
 {
-    private List<char> guessedLetters;
-
-    private int attemptsLeft;
-
-    public Player(int attemptsNumber)
+    public class Player
     {
-        guessedLetters = new List<char>();
-        attemptsLeft = attemptsNumber; 
-    }
+        private List<char> guessedLetters;
 
-    public bool AddGuessedLetter(char letter)
-    {
-        bool letterGuessing = false;
-        if (!guessedLetters.Contains(letter))
+        private int attemptsLeft;
+
+        public Player(int attemptsNumber)
         {
-            guessedLetters.Add(letter);
-            letterGuessing= true;
+            guessedLetters = new List<char>();
+            attemptsLeft = attemptsNumber;
         }
-        return letterGuessing;
-    }
 
-    public bool UpdateAttempsLeft(char letter)
-    {
-        bool attemptsReduced = false;
-        if (!guessedLetters.Contains(letter))
+        public bool AddGuessedLetter(char letter)
         {
-                        guessedLetters.Add(letter);
-            attemptsLeft--;
-            attemptsReduced = true;
+            bool letterGuessing = false;
+            if (!guessedLetters.Contains(letter))
+            {
+                guessedLetters.Add(letter);
+                letterGuessing = true;
+            }
+            return letterGuessing;
         }
-        return attemptsReduced;
-    }
 
-    public bool HasAttemptsLeft()
-    {
-        return attemptsLeft > 0;
-    }
+        public bool UpdateAttempsLeft(char letter)
+        {
+            bool attemptsReduced = false;
+            if (!guessedLetters.Contains(letter))
+            {
+                guessedLetters.Add(letter);
+                attemptsLeft--;
+                attemptsReduced = true;
+            }
+            return attemptsReduced;
+        }
 
-    public int NumberOfAttemptsLeft()
-    {
-        return attemptsLeft;
+        public bool HasAttemptsLeft()
+        {
+            return attemptsLeft > 0;
+        }
+
+        public int NumberOfAttemptsLeft()
+        {
+            return attemptsLeft;
+        }
     }
 }
-
-//}
