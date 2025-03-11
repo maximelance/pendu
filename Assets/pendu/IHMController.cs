@@ -91,5 +91,10 @@ namespace Assets.pendu
         {
             SceneManager.LoadScene("SettingsPendu");
         }
+
+        public void QuitApplication()
+        {
+            Application.Quit();
+        }
     }
 }
